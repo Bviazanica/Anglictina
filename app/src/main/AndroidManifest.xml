@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnglictinaBudemeSlovnuZasobu">
+        <activity android:name=".StartTesting"></activity>
+        <activity android:name=".CategoryContent" />
+        <activity android:name=".Vocabulary" />
+        <activity android:name=".AddExpression" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

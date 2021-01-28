@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:id="@+id/add_expression_lyt">
+
+    <TextView
+        android:id="@+id/add_expression_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/add_expression"
+        android:layout_marginBottom="30sp"
+        />
+
+
+    <EditText
+        android:id="@+id/english_expression_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/expression_hint"
+        android:layout_centerInParent="true"
+        android:minWidth="250sp"
+        android:layout_marginBottom="30sp"
+        android:layout_below="@+id/add_expression_txt"
+         />
+
+    <EditText
+        android:id="@+id/translation_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/translation_hint"
+        android:layout_centerInParent="true"
+        android:minWidth="250sp"
+        android:layout_marginBottom="30sp"
+        android:layout_below="@+id/english_expression_txt"
+        />
+
+    <LinearLayout
+        android:id="@+id/dropdown_with_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/translation_txt"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30sp"
+        android:gravity="center"
+        >
+        <Spinner
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:layout_centerInParent="true"
+            android:minWidth="250sp"
+
+            android:spinnerMode="dropdown" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_category_plus_btn"
+            android:text="@string/plus_txt"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/category"
+
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100sp"
+        android:layout_below="@id/dropdown_with_plus"
+        android:layout_centerInParent="true"
+        android:text="@string/add_btn"
+        />
+
+
+</RelativeLayout>
+

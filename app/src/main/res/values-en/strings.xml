@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EnglishBuildingVocabulary</string>
+    <string name="add_expression">Add expression</string>
+    <string name="app_title">English</string>
+    <string name="vocabulary">Vocabulary</string>
+    <string name="start_test">Start testing</string>
+    <string name="build_vocabulary">Building vocabulary</string>
+    <string name="expression_hint">Phrase in english</string>
+    <string name="translation_hint">Translation</string>
+    <string name="add_btn">Add</string>
+    <string name="plus_txt">+</string>
+    <string name="category_list">Categories</string>
+    <string name="category">Category</string>
+</resources>

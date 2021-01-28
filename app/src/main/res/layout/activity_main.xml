@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center"
+    android:id="@+id/main_page">
 
     <TextView
+        android:id="@+id/app_title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:text="@string/app_title"
+        />
+    <TextView
+        android:id="@+id/build_vocabulary_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/app_title_txt"
+        android:textSize="20sp"
+        android:text="@string/build_vocabulary"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/add_expression_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30sp"
+        android:minWidth="250sp"
+        android:layout_below="@id/build_vocabulary_txt"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100sp"
+        android:text="@string/add_expression" />
+
+    <Button
+        android:id="@+id/vocabulary_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/add_expression_btn"
+        android:layout_marginBottom="30sp"
+        android:minWidth="250sp"
+        android:layout_centerInParent="true"
+        android:text="@string/vocabulary" />
+
+    <Button
+        android:id="@+id/start_test_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vocabulary_btn"
+        android:layout_centerInParent="true"
+        android:minWidth="250sp"
+        android:text="@string/start_test" />
+
+</RelativeLayout>
+
