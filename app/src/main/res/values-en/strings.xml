@@ -12,4 +12,11 @@
     <string name="plus_txt">+</string>
     <string name="category_list">Categories</string>
     <string name="category">Category</string>
+    <string name="import_data">Import data</string>
+    <string name="export_data">Export data</string>
+    <string name="dialogTitle">Test from</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="english">English</string>
+    <string name="slovak">Slovak</string>
 </resources>

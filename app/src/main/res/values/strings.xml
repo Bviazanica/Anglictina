@@ -11,4 +11,11 @@
     <string name="plus_txt">+</string>
     <string name="category_list">Zoznam kategórií</string>
     <string name="category">Kategória</string>
+    <string name="import_data">Importovať údaje</string>
+    <string name="export_data">Exportovať údaje</string>
+    <string name="dialogTitle">Testovať sa z</string>
+    <string name="confirm">Potvrdiť</string>
+    <string name="cancel">Zrušiť</string>
+    <string name="english">Angličtina</string>
+    <string name="slovak">Slovenčina</string>
 </resources>

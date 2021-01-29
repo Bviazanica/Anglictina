@@ -1,0 +1,20 @@
+[
+  {
+    "phrase": "Dog",
+    "translation": "Pes",
+    "category_sk": "Zvieratá",
+    "category_eng": "Animals"
+  },
+  {
+    "phrase": "Bread",
+    "translation": "Chlieb",
+    "category_sk": "Jedlo",
+    "category_eng": "Food"
+  },
+  {
+  "phrase": "Car",
+  "translation": "Auto",
+  "category_sk": "Doprava",
+  "category_eng": "Traffic"
+}
+]
