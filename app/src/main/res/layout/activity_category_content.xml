@@ -18,7 +18,7 @@
         android:layout_margin="30sp"
         />
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/records"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/category_content_txt"

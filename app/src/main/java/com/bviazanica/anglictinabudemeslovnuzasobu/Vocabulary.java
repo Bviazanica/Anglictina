@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -20,24 +19,25 @@ import java.util.Locale;
 public class Vocabulary extends AppCompatActivity {
     Intent intent;
     TextView category;
+    TextView category_id;
     Boolean engLocale;
     ListView lv;
     MyDatabaseHelper dbHelper = new MyDatabaseHelper(this);
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
-
         engLocale = Locale.getDefault().getLanguage().startsWith("en");
         ArrayList<HashMap<String, String>> categoriesList = dbHelper.viewAllCategories();
+        System.out.println(categoriesList);
         if (categoriesList.size() != 0) {
             lv = findViewById(R.id.category_lv);
             lv.setTextFilterEnabled(true);
 
             lv.setOnItemClickListener((parent, view, position, id) -> {
-
-                System.out.println("toto je id " + id);
+                category_id = view.findViewById(R.id.category_id);
                 if (!engLocale) {
                     category = view.findViewById(R.id.category_sk);
                 } else {
@@ -46,15 +46,21 @@ public class Vocabulary extends AppCompatActivity {
                 intent = new Intent(this, CategoryContent.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("category", category.getText().toString());
-                intent.putExtra("category_id", id);
+                intent.putExtra("category_id", category_id.getText().toString());
                 intent.putExtra("engLocale", engLocale);
                 startActivity(intent);
             });
             ListAdapter adapter;
             if (!engLocale) {
-                adapter = new SimpleAdapter(Vocabulary.this, categoriesList, R.layout.item, new String[]{"category_sk"}, new int[]{R.id.category_sk});
+                adapter = new SimpleAdapter(Vocabulary.this,
+                        categoriesList, R.layout.item,
+                        new String[]{"category_sk", "category_id"},
+                        new int[]{R.id.category_sk, R.id.category_id});
             } else {
-                adapter = new SimpleAdapter(Vocabulary.this, categoriesList, R.layout.item, new String[]{"category_eng"}, new int[]{R.id.category_eng});
+                adapter = new SimpleAdapter(Vocabulary.this,
+                        categoriesList, R.layout.item,
+                        new String[]{"category_eng", "category_id"},
+                        new int[]{R.id.category_eng, R.id.category_id});
             }
             lv.setAdapter(adapter);
 

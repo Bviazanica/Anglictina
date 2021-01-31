@@ -16,7 +16,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     protected static final String DB_NAME = "my_vocabulary.db";
     protected static final int DB_VERSION = 1;
     protected static final String TABLE_STRINGS = "strings";
-    protected static final String COLUMN_ID = "_ID";
+    protected static final String COLUMN_ID = "_id";
     protected static final String COLUMN_STRING_SK = "string_sk";
     protected static final String COLUMN_STRING_ENG = "string_eng";
     protected static final String COLUMN_CATEGORY_ID = "category_id";
@@ -41,7 +41,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_STRINGS);
         db.execSQL(SQL_CREATE_TABLE_CATEGORIES);
-
     }
 
     @Override
@@ -111,9 +110,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return records;
     }
 
-    public ArrayList<HashMap<String, String>> viewCategoriesById(int id) {
+    public ArrayList<HashMap<String, String>> viewCategoryRecords(String id) {
         ArrayList<HashMap<String, String>> records = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " + TABLE_STRINGS + " WHERE " + COLUMN_CATEGORY_ID + "=" + id;
+        String selectQuery = "SELECT * FROM " + TABLE_STRINGS + " WHERE _id=" + id + "";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -123,10 +122,26 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                 hashMap.put(COLUMN_ID, cursor.getString(0));
                 hashMap.put(COLUMN_STRING_SK, cursor.getString(1));
                 hashMap.put(COLUMN_STRING_ENG, cursor.getString(2));
+                hashMap.put(COLUMN_CATEGORY_ID, cursor.getString(3));
                 records.add(hashMap);
             } while (cursor.moveToNext());
         }
         return records;
+    }
+
+    public String getId(String value) {
+        String id = null;
+        String selectQuery = "SELECT * FROM " + TABLE_STRINGS +
+                " WHERE string_sk = '" + value + "'";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                id = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        return id;
     }
 
 
