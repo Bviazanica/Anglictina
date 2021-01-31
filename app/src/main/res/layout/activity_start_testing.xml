@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20sp"
     android:gravity="center"
     tools:context=".StartTesting">
 
-    <Button
-        android:id="@+id/answer_one_btn"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:id="@+id/answers_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/answer_two_btn"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        android:minWidth="300sp"
-        android:text="Button" />
+        android:layout_centerVertical="true">
 
-    <Button
-        android:id="@+id/answer_two_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/answer_three_btn"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20dp"
-        android:minWidth="300sp"
-        android:text="Button" />
+        <RadioButton
+            android:id="@+id/answer_rButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Option 1" />
 
-    <Button
-        android:id="@+id/answer_three_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/answer_four_btn"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20sp"
-        android:minWidth="300sp"
-        android:text="Button" />
+        <RadioButton
+            android:id="@+id/answer_rButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Option 2" />
 
-    <Button
-        android:id="@+id/answer_four_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:minWidth="300sp"
-        android:text="Button" />
+        <RadioButton
+            android:id="@+id/answer_rButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Option 3" />
+    </RadioGroup>
 
     <TextView
         android:id="@+id/phrase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/progress"
-        android:layout_centerHorizontal="true"
+        android:layout_above="@id/answers_group"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="30sp"
-        android:gravity="center"
         android:paddingTop="20sp"
         android:text="Fráza"
+        android:textAlignment="center"
         android:textSize="30sp" />
 
-    <EditText
-        android:id="@+id/progress"
+<!--    <TextView-->
+<!--        android:id="@+id/progress"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/phrase"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_marginBottom="50sp"-->
+<!--        android:paddingTop="20sp"-->
+<!--        android:text="1/10"-->
+<!--        android:textSize="30sp" />-->
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/answer_one_btn"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150sp"
-        android:paddingTop="20sp"
-        android:text="1/10"
-        android:textSize="30sp" />
+        android:layout_below="@id/answers_group"
+        >
+        <Button
+            android:id="@+id/button_confirm_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:onClick="checkResult"/>
+    </RelativeLayout>
+
 
 </RelativeLayout>

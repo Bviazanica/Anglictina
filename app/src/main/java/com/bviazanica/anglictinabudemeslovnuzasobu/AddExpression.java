@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -79,7 +80,8 @@ public class AddExpression extends AppCompatActivity implements AdapterView.OnIt
         query.put(MyDatabaseHelper.COLUMN_CATEGORY_ID, selectedItem_id);
 
         dbHelper.insertString(query);
-        intent = new Intent(this, CategoryContent.class);
+        Toast.makeText(this, R.string.expression_added, Toast.LENGTH_SHORT).show();
+        intent = new Intent(this, AddExpression.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
 

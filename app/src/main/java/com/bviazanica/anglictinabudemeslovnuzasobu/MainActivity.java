@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 })
                 .setPositiveButton(getString(R.string.confirm), (dialog, which) -> {
                     intent = new Intent(MainActivity.this, StartTesting.class);
+                    intent.putExtra("selectedTestLanguage", selectedTest);
                     startActivity(intent);
-                    System.out.println(selectedTest);
                 })
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();

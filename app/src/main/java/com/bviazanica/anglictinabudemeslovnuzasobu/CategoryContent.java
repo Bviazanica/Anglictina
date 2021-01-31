@@ -1,6 +1,5 @@
 package com.bviazanica.anglictinabudemeslovnuzasobu;
 
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 public class CategoryContent extends AppCompatActivity {
     String category;
     String category_id;
-    Boolean engLocale = false;
     MyDatabaseHelper dbHelper = new MyDatabaseHelper(this);
     ListView lv;
     @Override
@@ -28,16 +26,14 @@ public class CategoryContent extends AppCompatActivity {
         category_id = getIntent().getStringExtra("category_id");
         title.setText(category);
         ArrayList<HashMap<String, String>> records = dbHelper.viewCategoryRecords(category_id);
-        engLocale = getIntent().getBooleanExtra("engLocale", false);
+        System.out.println(records);
 
         lv = findViewById(R.id.records);
         lv.setTextFilterEnabled(true);
         ListAdapter adapter;
-        if (!engLocale) {
-            adapter = new SimpleAdapter(this, records, R.layout.item, new String[]{"string_sk", "_id"}, new int[]{R.id.string_sk, R.id.string_id});
-        } else {
-            adapter = new SimpleAdapter(this, records, R.layout.item, new String[]{"string_eng", "_id"}, new int[]{R.id.string_eng, R.id.string_id});
-        }
+        adapter = new SimpleAdapter(this, records, R.layout.category_items,
+                    new String[]{"string_sk", "string_eng", "_id"}, new int[]{R.id.string_sk, R.id.string_eng, R.id.string_id});
+
         lv.setAdapter(adapter);
     }
 }

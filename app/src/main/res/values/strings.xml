@@ -22,4 +22,9 @@
     <string name="category_hint">Kategória po anglicky</string>
     <string name="category_translation_hint">Kategória v slovenčine</string>
     <string name="category_added">Kategória pridaná</string>
+    <string name="expression_added">Výraz pridaný</string>
+    <string name="your_answer">Vaša odpoveď je ..</string>
+    <string name="ok">OK</string>
+    <string name="right">Správne !</string>
+    <string name="wrong">Nesprávne !</string>
 </resources>

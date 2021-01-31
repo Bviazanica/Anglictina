@@ -10,33 +10,13 @@
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/category_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/category_eng"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#4d4d4d"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/category_sk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#4d4d4d"
-        android:textStyle="bold" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        android:paddingTop="5sp"
+        android:paddingBottom="5sp">
 
         <TextView
             android:id="@+id/string_sk"
@@ -52,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
+            android:layout_alignParentEnd="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#4d4d4d"
             android:textStyle="bold" />

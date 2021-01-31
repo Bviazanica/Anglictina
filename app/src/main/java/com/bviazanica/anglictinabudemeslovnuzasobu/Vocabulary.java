@@ -31,7 +31,6 @@ public class Vocabulary extends AppCompatActivity {
         setContentView(R.layout.activity_vocabulary);
         engLocale = Locale.getDefault().getLanguage().startsWith("en");
         ArrayList<HashMap<String, String>> categoriesList = dbHelper.viewAllCategories();
-        System.out.println(categoriesList);
         if (categoriesList.size() != 0) {
             lv = findViewById(R.id.category_lv);
             lv.setTextFilterEnabled(true);
@@ -47,7 +46,6 @@ public class Vocabulary extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("category", category.getText().toString());
                 intent.putExtra("category_id", category_id.getText().toString());
-                intent.putExtra("engLocale", engLocale);
                 startActivity(intent);
             });
             ListAdapter adapter;
@@ -77,14 +75,12 @@ public class Vocabulary extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_category_btn:
-                System.out.println(item.toString());
                 Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, AddCategory.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("isFromAddExpression", false);
                 startActivity(intent);
             default:
-                System.out.println("nepoznam");
                 return super.onOptionsItemSelected(item);
         }
     }

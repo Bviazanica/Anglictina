@@ -73,7 +73,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public ArrayList<HashMap<String, String>> viewAllRecords() {
+    public ArrayList<HashMap<String, String>> getAllRecords() {
         ArrayList<HashMap<String, String>> records = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_STRINGS;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -112,7 +112,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<HashMap<String, String>> viewCategoryRecords(String id) {
         ArrayList<HashMap<String, String>> records = new ArrayList<>();
-        String selectQuery = "SELECT * FROM " + TABLE_STRINGS + " WHERE _id=" + id + "";
+        String selectQuery = "SELECT * FROM " + TABLE_STRINGS + " WHERE category_id=" + id + "";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
@@ -144,5 +144,56 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    public ArrayList<String> getStringIds() {
+        ArrayList<String> records = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_STRINGS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
 
+        if (cursor.moveToNext()) {
+            do {
+                records.add(cursor.getString(0));
+            } while (cursor.moveToNext());
+        }
+        return records;
+    }
+
+    public ArrayList<String> getAnswerStringsById(ArrayList<Integer> array, int i) {
+        ArrayList<String> records = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_STRINGS +
+                " WHERE _id IN ('" + array.get(0) + "', '" + array.get(1) + "', '" + array.get(2) + "')";
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(selectQuery);
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToNext()) {
+            do {
+                records.add(cursor.getString(i));
+            } while (cursor.moveToNext());
+        }
+        return records;
+    }
+
+    public ArrayList<String> findRightAnswer(String phrase, Boolean engLan) {
+        ArrayList<String> answer = new ArrayList<>();
+        String selectQuery;
+        if (!engLan) {
+             selectQuery = "SELECT * FROM " + TABLE_STRINGS +
+                    " WHERE string_eng IN ('" + phrase + "')";
+        } else {
+             selectQuery = "SELECT * FROM " + TABLE_STRINGS +
+                    " WHERE string_sk IN ('" + phrase + "')";
+        }
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(selectQuery);
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToNext()) {
+            do {
+                answer.add(cursor.getString(1));
+                answer.add(cursor.getString(2));
+            } while (cursor.moveToNext());
+        }
+        return answer;
+    }
 }
