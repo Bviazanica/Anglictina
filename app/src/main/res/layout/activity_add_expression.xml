@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".AddExpression">
 
     <TextView
         android:id="@+id/add_expression_txt"
@@ -30,7 +30,7 @@
         android:minWidth="250sp" />
 
     <EditText
-        android:id="@+id/translation_txt"
+        android:id="@+id/slovak_expression_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/english_expression_txt"
@@ -44,14 +44,14 @@
         android:id="@+id/dropdown_with_plus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/translation_txt"
+        android:layout_below="@+id/slovak_expression_txt"
         android:layout_centerInParent="true"
         android:layout_marginBottom="30sp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/category"
+            android:id="@+id/categories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -60,23 +60,27 @@
 
             android:spinnerMode="dropdown" />
 
-        <TextView
+        <ImageButton
             android:id="@+id/add_category_plus_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_toRightOf="@+id/category"
-            android:text="@string/plus_txt"
+            android:src="@drawable/plus"
+            android:layout_marginBottom="2sp"
+            android:onClick="goToAddCategory"
 
             />
     </LinearLayout>
 
     <Button
+        android:id="@+id/add_expression_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dropdown_with_plus"
         android:layout_centerInParent="true"
         android:minWidth="100sp"
+        android:onClick="addExpression"
         android:text="@string/add_btn" />
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AnglictinaBudemeSlovnuZasobu</string>
+    <string name="app_name">Môj slovník</string>
     <string name="add_expression">Pridať výraz</string>
     <string name="app_title">Angličtina</string>
     <string name="vocabulary">Slovník</string>
@@ -18,4 +18,8 @@
     <string name="cancel">Zrušiť</string>
     <string name="english">Angličtina</string>
     <string name="slovak">Slovenčina</string>
+    <string name="add_category">Pridať kategóriu</string>
+    <string name="category_hint">Kategória po anglicky</string>
+    <string name="category_translation_hint">Kategória v slovenčine</string>
+    <string name="category_added">Kategória pridaná</string>
 </resources>

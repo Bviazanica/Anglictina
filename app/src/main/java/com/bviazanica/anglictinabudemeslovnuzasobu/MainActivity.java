@@ -1,6 +1,5 @@
 package com.bviazanica.anglictinabudemeslovnuzasobu;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,9 +11,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Intent intent = new Intent();
     String selectedTest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,26 +28,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             btn[i].setOnClickListener(this);
         }
     }
+
     @Override
     public void onClick(View v) {
         if (v == findViewById(R.id.add_expression_btn)) {
-            intent = new Intent(MainActivity.this,
+            intent = new Intent(this,
                     AddExpression.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
         } else if (v == findViewById(R.id.vocabulary_btn)) {
-            intent = new Intent(MainActivity.this,
+            intent = new Intent(this,
                     Vocabulary.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(intent);
         } else if (v == findViewById(R.id.start_test_btn)) {
             showAlertDialog();
         }
-
     }
-
-    //pridaj slovo => Add expression => modal na kategoriu
-
-    //MOJ SLOVNIK => Vocabulary, po klik na kategoriu => CategoryContent
-
-    //START TESTING bude mat dialog na výber ENG -> SVK ; SVK -> ENG a potom => StartTestingActivity
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -58,12 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case R.id.import_data:
             case R.id.export_data:
+                System.out.println(item.toString());
                 Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
     private void showAlertDialog() {
         String[] testLanguages = {getString(R.string.english), getString(R.string.slovak)};
         selectedTest = getString(R.string.english);
@@ -74,13 +73,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     System.out.println("selected je " + selectedTest);
                 })
                 .setPositiveButton(getString(R.string.confirm), (dialog, which) -> {
-                    Intent intent = new Intent(MainActivity.this, StartTesting.class);
+                    intent = new Intent(MainActivity.this, StartTesting.class);
                     startActivity(intent);
                     System.out.println(selectedTest);
                 })
-
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
     }
-
 }

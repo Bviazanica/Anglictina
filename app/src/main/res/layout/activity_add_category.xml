@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_expression_lyt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".AddCategory">
+
+    <TextView
+        android:id="@+id/add_category_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30sp"
+        android:text="@string/add_category"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/english_category_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_category_txt"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30sp"
+        android:hint="@string/category_hint"
+        android:inputType="text"
+        android:minWidth="250sp" />
+
+    <EditText
+        android:id="@+id/slovak_category_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/english_category_txt"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="30sp"
+        android:hint="@string/category_translation_hint"
+        android:inputType="text"
+        android:minWidth="250sp" />
+
+
+    <Button
+        android:id="@+id/add_category_btn_ab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/slovak_category_txt"
+        android:layout_centerInParent="true"
+        android:minWidth="100sp"
+        android:onClick="addCategory"
+        android:text="@string/add_btn"
+        />
+
+
+</RelativeLayout>
+

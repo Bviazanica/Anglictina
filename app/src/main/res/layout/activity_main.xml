@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:gravity="center"
-    android:id="@+id/main_page">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/app_title_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textSize="30sp"
-        android:textStyle="bold"
         android:text="@string/app_title"
-        />
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <TextView
         android:id="@+id/build_vocabulary_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@id/app_title_txt"
-        android:textSize="20sp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50sp"
         android:text="@string/build_vocabulary"
-        />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/add_expression_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:minWidth="250sp"
         android:layout_below="@id/build_vocabulary_txt"
         android:layout_centerInParent="true"
-        android:layout_marginTop="100sp"
+
+        android:layout_marginBottom="30sp"
+        android:minWidth="250sp"
+        android:minHeight="50sp"
         android:text="@string/add_expression" />
 
     <Button
@@ -42,9 +43,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/add_expression_btn"
+        android:layout_centerInParent="true"
         android:layout_marginBottom="30sp"
         android:minWidth="250sp"
-        android:layout_centerInParent="true"
+        android:minHeight="50sp"
         android:text="@string/vocabulary" />
 
     <Button
@@ -54,6 +56,7 @@
         android:layout_below="@id/vocabulary_btn"
         android:layout_centerInParent="true"
         android:minWidth="250sp"
+        android:minHeight="50sp"
         android:text="@string/start_test" />
 
 </RelativeLayout>

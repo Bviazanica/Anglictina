@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EnglishBuildingVocabulary</string>
+    <string name="app_name">My vocabulary</string>
     <string name="add_expression">Add expression</string>
     <string name="app_title">English</string>
     <string name="vocabulary">Vocabulary</string>
@@ -19,4 +19,8 @@
     <string name="cancel">Cancel</string>
     <string name="english">English</string>
     <string name="slovak">Slovak</string>
+    <string name="add_category">Pridať kategóriu</string>
+    <string name="category_hint">Kategória po anglicky</string>
+    <string name="category_translation_hint">Kategória v slovenčine</string>
+    <string name="category_added">Kategória pridaná</string>
 </resources>

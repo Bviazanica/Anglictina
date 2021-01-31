@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_expression_lyt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:gravity="center"
-    android:id="@+id/add_expression_lyt">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/category_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="@string/category_list"
         android:layout_margin="30sp"
-        />
+        android:text="@string/category_list"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <ListView
+        android:id="@+id/category_lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/category_list"
-        />
-
-
-
+        android:clickable="true" />
 
 
 </RelativeLayout>
