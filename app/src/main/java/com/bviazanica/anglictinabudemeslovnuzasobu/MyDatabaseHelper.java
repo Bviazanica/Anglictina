@@ -5,8 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -163,7 +167,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String selectQuery = "SELECT * FROM " + TABLE_STRINGS +
                 " WHERE _id IN ('" + array.get(0) + "', '" + array.get(1) + "', '" + array.get(2) + "')";
         SQLiteDatabase db = this.getWritableDatabase();
-        System.out.println(selectQuery);
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToNext()) {
@@ -185,7 +188,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     " WHERE string_sk IN ('" + phrase + "')";
         }
         SQLiteDatabase db = this.getWritableDatabase();
-        System.out.println(selectQuery);
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToNext()) {
@@ -195,5 +197,47 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return answer;
+    }
+
+    public JSONArray getResults(String table) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String searchQuery = "SELECT  * FROM " + table;
+        Cursor cursor = db.rawQuery(searchQuery, null);
+
+        JSONArray resultSet = new JSONArray();
+        JSONObject returnObj = new JSONObject();
+
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false) {
+
+            int totalColumn = cursor.getColumnCount();
+            JSONObject rowObject = new JSONObject();
+
+            for (int i = 0; i < totalColumn; i++) {
+                if (cursor.getColumnName(i) != null) {
+
+                    try {
+
+                        if (cursor.getString(i) != null) {
+                            Log.d("TAG_NAME", cursor.getString(i));
+                            rowObject.put(cursor.getColumnName(i), cursor.getString(i));
+                        } else {
+                            rowObject.put(cursor.getColumnName(i), "");
+                        }
+                    } catch (Exception e) {
+                        Log.d("TAG_NAME", e.getMessage());
+                    }
+                }
+
+            }
+
+            resultSet.put(rowObject);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        Log.d("TAG_NAME", resultSet.toString());
+        return resultSet;
     }
 }
