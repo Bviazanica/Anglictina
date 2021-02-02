@@ -20,77 +20,90 @@ public class StartTesting extends AppCompatActivity {
     Intent intent;
     String selectedTestLanguage;
     String answer;
-    String resultMessage;
+    boolean resultMessage;
     int answers = 3;
     TextView phrase;
-    Boolean rightAnswer;
+    TextView progress;
     ArrayList<Integer> answersIds = new ArrayList<>();
     ArrayList<String> answersStrings = new ArrayList<>();
     ArrayList<String> findAnswer = new ArrayList<>();
     Integer randomId;
     int column_index = 2;
+    int answer_index = 1;
     String userAnswer;
     RadioGroup rbGroup;
+    RadioButton radioButton;
     Boolean testEnglish = false;
-    Toast toast;
+    int round = 0;
+    ArrayList<Answer> allAnswers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_testing);
+        answersIds.clear();
         selectedTestLanguage = getIntent().getStringExtra("selectedTestLanguage");
         if (selectedTestLanguage.equals(getString(R.string.english))) {
             testEnglish = true;
             column_index = 1;
+            answer_index = 0;
         }
-        ArrayList<String> records = dbHelper.getStringIds();
-        while (answersIds.size() != answers) {
-            Random r = new Random();
-            randomId = Integer.parseInt(records.get(r.nextInt(records.size())));
-            if (!answersIds.contains(randomId)) {
-                answersIds.add(randomId);
-            }
-        }
-        answersStrings = dbHelper.getAnswerStringsById(answersIds, column_index);
-
+        progress = findViewById(R.id.progress);
         rbGroup = findViewById(R.id.answers_group);
-        for (int i = 0; i < rbGroup.getChildCount(); i++) {
-            ((RadioButton) rbGroup.getChildAt(i)).setText(answersStrings.get(i));
-        }
-        rbGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            RadioButton radioButton = findViewById(checkedId);
-            userAnswer = radioButton.getText().toString();
-            System.out.println(userAnswer);
-        });
-        answer = answersStrings.get(new Random().nextInt(answersStrings.size()));
-        findAnswer = dbHelper.findRightAnswer(answer, testEnglish);
         phrase = findViewById(R.id.phrase);
-        if (findAnswer.size() != 0) {
-            if (testEnglish) {
-                phrase.setText(findAnswer.get(1));
-            } else
-                phrase.setText(findAnswer.get(0));
-        }
+        confirmAnswer();
     }
 
     public void checkResult(View view) {
-        if (testEnglish) {
-            if (findAnswer.get(0).equals(userAnswer)) {
-                resultMessage = getString(R.string.right);
-            } else {
-                resultMessage = getString(R.string.wrong);
-            }
+        if (findAnswer.get(answer_index).equals(userAnswer)) {
+            resultMessage = true;
         } else {
-            if (findAnswer.get(1).equals(userAnswer)) {
-                resultMessage = getString(R.string.right);
-            } else {
-                resultMessage = getString(R.string.wrong);
+            resultMessage = false;
+        }
+        allAnswers.add(new Answer(userAnswer, phrase.getText().toString(), resultMessage, findAnswer.get(answer_index), String.valueOf(round)));
+        confirmAnswer();
+        System.out.println(round);
+    }
+
+    public void confirmAnswer() {
+
+        if (round == 4) {
+            intent = new Intent(this, TestResults.class);
+            intent.putExtra("allAnswers", allAnswers);
+            intent.putExtra("selectedTestLanguage", selectedTestLanguage);
+            startActivity(intent);
+        } else {
+            round = round + 1;
+            progress.setText(String.valueOf(round) + getText(R.string.progress));
+            ArrayList<String> records = dbHelper.getStringIds();
+            while (answersIds.size() != answers) {
+                Random r = new Random();
+                randomId = Integer.parseInt(records.get(r.nextInt(records.size())));
+                if (!answersIds.contains(randomId)) {
+                    answersIds.add(randomId);
+                }
+            }
+            answersStrings = dbHelper.getAnswerStringsById(answersIds, column_index);
+            for (int i = 0; i < rbGroup.getChildCount(); i++) {
+                ((RadioButton) rbGroup.getChildAt(i)).setText(answersStrings.get(i));
+                ((RadioButton) rbGroup.getChildAt(i)).setChecked(false);
+            }
+
+            rbGroup.setOnCheckedChangeListener((group, checkedId) -> {
+                radioButton = findViewById(checkedId);
+                userAnswer = radioButton.getText().toString();
+            });
+            answer = answersStrings.get(new Random().nextInt(answersStrings.size()));
+            findAnswer = dbHelper.findRightAnswer(answer, testEnglish);
+
+            if (findAnswer.size() != 0) {
+                if (testEnglish) {
+                    phrase.setText(findAnswer.get(1));
+                } else
+                    phrase.setText(findAnswer.get(0));
             }
         }
-        toast = Toast.makeText(this, resultMessage, Toast.LENGTH_LONG);
-        toast.show();
-        intent = new Intent(this, StartTesting.class);
-        intent.putExtra("selectedTestLanguage", selectedTestLanguage);
-        startActivity(intent);
+        answersIds.clear();
+
     }
 }

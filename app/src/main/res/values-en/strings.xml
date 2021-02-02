@@ -24,8 +24,13 @@
     <string name="category_translation_hint">Category in slovak</string>
     <string name="category_added">Category added</string>
     <string name="expression_added">Expression added</string>
-    <string name="your_answer">Your answer is ..</string>
+    <string name="your_answer">Your answer: </string>
     <string name="ok">OK</string>
     <string name="right">right !</string>
     <string name="wrong">wrong !</string>
+    <string name="test_results">Test results</string>
+    <string name="question_number">Question num.</string>
+    <string name="progress">" / 10"</string>
+    <string name="right_answer">Right answer: </string>
+    <string name="again">Test again</string>
 </resources>

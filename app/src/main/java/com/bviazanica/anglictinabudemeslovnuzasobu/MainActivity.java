@@ -59,11 +59,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> helper;
     String json;
 
-    public static boolean isSDCARDAvailable() {
-        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,7 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.import_data:
             case R.id.export_data:
                 Toast.makeText(this, item.toString(), Toast.LENGTH_SHORT).show();
                 return true;

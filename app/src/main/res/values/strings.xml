@@ -23,8 +23,13 @@
     <string name="category_translation_hint">Kategória v slovenčine</string>
     <string name="category_added">Kategória pridaná</string>
     <string name="expression_added">Výraz pridaný</string>
-    <string name="your_answer">Vaša odpoveď je ..</string>
+    <string name="your_answer">Vaša odpoveď: </string>
     <string name="ok">OK</string>
     <string name="right">Správne !</string>
     <string name="wrong">Nesprávne !</string>
+    <string name="test_results">Výsledky testu</string>
+    <string name="question_number">Otázka č.</string>
+    <string name="progress">" / 10"</string>
+    <string name="right_answer">Správna odpoveď: </string>
+    <string name="again">Opakovať</string>
 </resources>
